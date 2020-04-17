@@ -1,0 +1,60 @@
+
+server:
+  port: 8383
+spring:
+  application:
+    name: spring-cloud-config-client
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: arnold-config-server
+#      uri: http://localhost:8181       #默认配置http://localhost:8888
+      name: special                    #名字不建议使用application,不然默认使用default
+      profile: default                 #默认default
+      label: master                    #默认master
+      username: Arnold
+      password: 123456
+## 开启消息跟踪
+    bus:
+      trace:
+        enabled: true
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+
+
+#management:
+#  security:
+#    enabled: false
+eureka:
+  client:
+    service-url:
+       defaultZone: http://Arnold:123456@192.168.1.121:8761/eureka/
+#       defaultZone: http://129.204.66.157:8585/eureka/
+  instance:
+    appname: spring-cloud-config-client
+    metadata-map:
+       Arnold: Arnold
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #health,bus-refresh,refresh
+
+
+
+# management.security.enabled=false
+#managemetn
+#### 刷新时，关闭安全验证
+#management.security.enable d=false
+### 开启消息跟踪
+#spring.cloud.bus.trace.enabled=true
+#
+#spring.rabbitmq.host=192.168.9.89
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=admin
+#spring.rabbitmq.password=123456
