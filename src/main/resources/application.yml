@@ -13,8 +13,7 @@ spring:
       server:
         git:
           uri: https://github.com/LemonArnold/LemonProperties
-          search-paths: {application}
-
+          search-paths:  '{application}' #special  #
   rabbitmq:
     host: localhost
     port: 5672
@@ -24,8 +23,9 @@ eureka:
   client:
     service-url:
        defaultZone: http://Arnold:123456@192.168.1.121:8761/eureka/
+  instance:
+    hostname: localhost
 #       defaultZone: http://129.204.66.157:8585/eureka/
-
 management:
   endpoints:
     web:
