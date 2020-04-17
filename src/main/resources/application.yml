@@ -1,0 +1,85 @@
+
+server:
+  port: 8181
+spring:
+  application:
+    name: arnold-config-server
+  security:
+    user:
+      name: Arnold
+      password: 123456
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/LemonArnold/{application}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+       defaultZone: http://Arnold:123456@192.168.1.121:8761/eureka/
+#       defaultZone: http://129.204.66.157:8585/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #health,bus-refresh,refresh
+
+
+
+
+
+
+
+
+
+
+# 14fb87ec-9532-4769-baf7-c8826c60d493
+#security:
+#  name: user
+#  password: root123456
+#    basic:
+#      enabled: true
+#security:
+#  basic:
+#    enabled: false  #启用基本认证(默认)
+#  user:   #配置security用户名密码，默认值为“user”的用户名和随机生成的密码
+#    name: user
+#    password: password123
+# encrypt:
+#   key: foo
+
+
+#          search-paths: routes
+#          username: LemonArnold
+#          password: lk265426
+
+#        Git URI中的占位符 Spring Cloud Config服务器支持一个Git仓库URL，其中包含{application}和{profile}（以及{label}）的占位符，如果需要，请记住标签应用为git标签）
+#          uri: https://github.com/LemonArnold/{application}
+#          普通URL
+#          uri: https://github.com/LemonArnold/config-server
+#模式匹配和多个存储库
+#还可以通过应用程序和配置文件名称的模式匹配来支持更复杂的需求。模式格式是带有通配符的{application}/{profile}名称的逗号分隔列表（可能需要引用以通配符开头的模式）
+#          uri:  https://github.com/LemonArnold/config-server
+#          search-paths: config-route
+#          username:
+#          password:
+
+#          repos:
+#            simple: https://github.com/LemonArnold/simple
+#            pattern: simple*/dev*,*simple*/dev*
+#            special:
+#              uri: https://github.com/LemonArnold/special
+#            config-server:
+#               pattern: config*/dev*,*config*/redis*
+#               uri: https://github.com/LemonArnold/config-server
+
+
+
+#encrypt:
+#  key: foo
